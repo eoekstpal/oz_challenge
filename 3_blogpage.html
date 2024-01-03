@@ -6,25 +6,58 @@
     <title>Document</title>
 </head>
 <style>
-    .div {background-color: white; width:800px; border-radius:7px; margin:0 auto;}
-    #dog {width:100px; height:100px; border-radius:70px; margin:0 auto; overflow:hidden;}
+    div {
+        background-color: rgb(248, 248, 248); width:550px; border-radius:17px; margin:0 auto;
+    }
+    #dog {
+        width:100px; height:100px; border-radius:70px; border: 3px solid lavender;
+    }
+    *{
+        text-align: center; 
+    } /*전체 요소 가운데정렬*/
+    #cookie{
+        width: 300px; border: 3px solid lavender;
+    }
+    #name{font-size:20px;}
+    ul {
+        width: 230px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 </style>
 <body style="background-color:lavender">
     <div class="div">
     <br>
-        <h3 align="center">OZ코딩과 함께하는</h3>
-        <h1 align="center">세미의 블로그</h1>
+        <h3 align="center"></h3>
+        <h1>세미의 블로그</h1>
+        <img id="dog" src="/images/snowdog.jpeg" alt="profile image"/>
+        <p>안녕하세요. <b id="name">박세미</b>입니다.</p>
     <br>
     </div>
     <br>
-    <div class="div">
-        <img id="dog" src="imags/snowdog.jpeg" alt="profile image"/>
-        <span>박세미</span>
-        <br>
-        <span>맞팔하고 소통해요~</span>
-    </div>
-    <div>
 
+    <div>
+        <br>
+        <h3>취미</h3>
+        <img id="cookie" src="/images/cookie.jpeg" alt="profile image"/>   
+        <p>저는 베이킹하는걸 좋아해요.</p>
+        <p><b style="color:rgb(189, 126, 71);">마들렌</b>과 <b style="color:brown;">쿠키</b>를 주로 구워요!</p>
+        <br>
+       
+        <hr style="background-color:lavender; height:2px; border:0;"> <!--hr 태그 색 지정-->
+        
+        <h3>올해의 목표</h3>
+        <ul>
+            <li>꾸준히 공부하는 습관 들이기</li>
+            <li>멋진 포트폴리오 작성하기</li>
+            <li>취업하기!</li>
+        </ul>
+        
+        <hr style="background-color:lavender; height:2px; border:0;"> <!--hr 태그 색 지정-->
+        <h3>마지막 한마디</h3>
+        <p>맞팔하고 소통해요~</p>
+        <p>새해 복 많이받으세용</p>
+        <br>
     </div>
 </body>
 </html>
