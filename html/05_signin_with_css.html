@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css를 이용한 회원가입 폼 만들기</title>
+    <link href="/css/05_signin_with_css.css" rel="stylesheet">
+</head>
+<body>
+    <main class="main">
+        <h1>OZ초격차 회원가입</h1>
+        <form class="form">
+            <input type="email" name="email" class="block" placeholder="이메일을 입력하세요.">
+            <br>
+            <input type="text" name="text" class="block" placeholder="이름을 입력하세요.">
+            <br>
+            <input type="password" name="pw" class="block" placeholder="비밀번호를 입력하세요.">
+            <br>
+            <input type="password" name="pw_check" class="block" placeholder="비밀번호를 다시 입력하세요.">
+            <br>
+            <input type="text" name="phone1" class="num" placeholder="010">
+            <span>-</span>
+            <input type="text" name="phone2" class="num" placeholder="1234">
+            <span>-</span>
+            <input type="text" name="phone3" class="num" placeholder="5678">
+            <br>
+            <div class="auth">
+                <span>000000</span>
+            <button name="auth_send" >인증번호 전송</button>
+            <br>
+            <span>3:00</span>
+            <button name="auth" >인증 완료</button>
+            </div>
+
+            <select class="block">
+            <option disabled selected>거주지역</option>
+            <option>서울특별시</option>
+            <option>부산광역시</option>
+            <option>대구광역시</option>
+            <option>인천광역시</option>
+            <option>광주광역시</option>
+            <option>대전광역시</option>
+            <option>울산광역시</option>
+            <option>세종특별자치시</option>
+            <option>경기도</option>
+            <option>강원틀별자치도</option>
+            <option>충청북도</option>
+            <option>충청남도</option>
+            <option>전라북도</option>
+            <option>전라남도</option>
+            <option>경상북도</option>
+            <option>경상남도</option>
+            <option>제주특별자치도</option>
+                </select>
+            <div>
+            <input type="radio" id="man" name="gender">
+            <label for="man">남성</label>
+            <input type="radio" id="woman" name="gender">
+            <label for="woman">여성</label>
+            </div>
+            <button class="submit">가입하기</button>
+        </form>
+    </main>    
+</body>
+</html>
