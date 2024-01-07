@@ -1,0 +1,32 @@
+
+body{
+    height: 100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(247, 254, 233);
+}
+input{
+    accent-color: rgb(148, 103, 252);
+}
+
+.div, h1{
+    width: 450px;
+    border-style: dashed;
+    border-color: rgb(207, 164, 255);
+    margin: 10px;
+    padding: 10px 10px 10px 10px;
+}
+#christmas{
+    font-size: 25px;
+    font-weight: bolder;
+    background: linear-gradient(to right top, red, green);
+    color: transparent;
+    -webkit-background-clip: text;
+}
+#cute{
+    font-size: 30px;
+    font-weight: bolder;
+    color: rgb(255, 105, 238);
+}
