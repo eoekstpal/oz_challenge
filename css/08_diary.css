@@ -23,7 +23,7 @@ input{
     font-weight: bolder;
     background: linear-gradient(to right top, red, green);
     color: transparent;
-    -webkit-background-clip: text;
+    background-clip: text;
 }
 #cute{
     font-size: 30px;

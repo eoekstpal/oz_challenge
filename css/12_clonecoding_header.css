@@ -1,0 +1,88 @@
+header.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: white;
+    color: #000000;
+}
+/*로고 속성*/
+.header-content1, .header-content2{
+    width: 100%;
+    max-width: 75rem;
+    height: 4rem;
+    padding: 0.75rem 1rem;
+    margin: auto;
+    justify-content: space-between;
+}
+.header-content_en_logo{
+    font-size: 1.7rem;
+    font-weight: 400;
+    height: 1em;
+    margin-right: 2.5rem;
+    line-height: 2.5rem;
+}
+.header-content_ko_logo{
+    font-size: 1.1rem;
+    font-weight: 800;
+    height: 1em;
+    margin-right:2.5rem;
+    line-height: 2.5rem;
+}
+/*header 수직 가운데정렬*/
+.header-content1_nav, .header-content2_nav{
+    align-items: center;
+}
+/*ul 점 삭제*/
+.header-content1_nav ul, .header-content2_nav ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+/*li 가로 배치*/
+.header-content1_nav ul li{
+    display: inline-block;
+    margin-right: 3.125rem;
+    font-size: 1.13rem;
+    font-weight: 400;
+}
+/*li 글자 속성*/
+.header-content2_nav ul li{
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+}
+/*before을 사용하여 li 사이 막대 추가 "|"
+참고: https://blog.hivelab.co.kr/%EA%B3%B5%EC%9C%A0before%EC%99%80after-%EA%B7%B8%EB%93%A4%EC%9D%98-%EC%A0%95%EC%B2%B4%EB%8A%94/*/
+.header-content2_nav ul li{
+    float: left;
+    margin: 0;
+}
+.header-content2_nav ul li::before{
+    padding: .9375rem;
+    content:"|";
+    font-size: 1rem;
+    font-weight: 50;
+    color:#c1c1c1;
+}
+.header-content2_nav ul li:first-child::before{
+    content:"";
+}
+/*수평선*/
+hr{
+    border: 0;
+    height: .0063rem;
+    background-color: #c1c1c1;
+}
+
+/*아이콘 속성*/
+.icon{
+    margin-right: 1rem;
+    border: none;
+    padding: 0;
+    font-size: 1.5rem;
+    background-color: transparent; /*투명*/
+}
+.down{
+    font-size: 1rem;
+}
