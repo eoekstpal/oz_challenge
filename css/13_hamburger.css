@@ -83,7 +83,25 @@ body{
     display: none;
 }
 
-
+/*메뉴 토글*/
+#hidden-menu_icon, .hidden-menu>ul{
+    display: none;
+}
+#hidden-menu_icon:checked ~ ul{
+    display: block;
+}
+.container2{
+    display: none;
+}
+@media screen and (max-width: 800px){
+    .container1{
+        display: none;
+    }
+    .container2{
+        display: block;
+    }
+}
+/*미디어쿼리*/
 @media screen and (max-width: 800px){
     .container1{
         display: none;
