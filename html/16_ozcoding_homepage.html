@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/16_ozcoding_homepage_header.css" rel="stylesheet">
+    <link href="/css/16_ozcoding_homepage_main.css" rel="stylesheet">
+    <title>OZ코딩 홈페이지 만들기</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 16;
+        }
+        body{
+            margin: 0;
+        }
+        .flex{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!--header-->
+        <header>
+            <!--header-top-->    
+            <div class="header-top"></div>
+
+            <!--header-middle-->
+            <div class="header-middle">
+                <div class="header-middle_img"></div>
+                <div class="header-middle_text flex">
+                    <div>
+                        <span class="header-middle_text_icon">&#128054;</span>
+                    오늘도 
+                    </div>
+                    <div>
+                        화이팅
+                        <span class="header-middle_text_icon">&#128054;</span>
+                    </div>
+                </div>
+            </div>
+
+            <!--header-bottom-->
+            <div class="header-bottom flex">
+                <div class="header-bottom_logo">OZ</div>
+                <nav class="header-bottom_nav flex">
+                    <ul>
+                        <li>오즈코딩 스쿨</li>
+                        <li>html</li>
+                        <li>css</li>
+                        <li>커리큘럼</li>
+                        <li>문의사항</li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!--main-->
+        <main>
+            <!--main-info-->
+            <section class="main-info">
+                <div class="main-info_text">
+                    <p>ABOUT</p>
+                    <h1>OZ코딩스쿨</h1>
+                </div>
+            </section>
+
+            <!--main-card-->
+            <div class="main-card flex">
+                <div class="main-card1 card">
+                    <a href="https://ozcodingschool.com/ozcoding/startupcamp">
+                        <p class="icon">&#9889;</p>
+                        <h2 class="main-card1_title">빠른 강의</h2>
+                        <p>군더더기 없는 진행으로<br>여러번의 시간을 절약합니다.</p>
+                    </a>
+                </div>
+                <div class="main-card2 card">
+                    <a href="https://ozcodingschool.com/mypage/classList">
+                        <p class="icon">📆</p>
+                        <h2 class="main-card2_title">손쉬운 학습</h2>
+                        <p>강의 페이지를 활용해서<br>편리하게 실습할 수 있습니다.</p>
+                    </a>
+                </div>
+                <div class="main-card3 card">
+                    <a href="https://ozcodingschool.com/ozcoding/oznightschool">
+                        <p class="icon">&#127918;</p>
+                        <h2 class="main-card3_title">플레이그라운드</h2>
+                        <p>강의를 위해 제작한 도구가<br>반복학습을 도와줍니다.</p>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
