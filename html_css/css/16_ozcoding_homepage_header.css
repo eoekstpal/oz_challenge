@@ -1,0 +1,174 @@
+/*header-top*/
+header{
+    position: relative;
+    height: 100%;
+}
+.header-top{
+    width: 100%;
+    height: 70px;
+    background-color: black;
+
+}
+/*header-middle*/
+.header-middle_img{
+    width: 100%;
+    height: 25rem;
+    background-image: url("/images/snowdog.jpeg");
+    background-repeat: repeat-x;
+    background-size: 37.5rem 25rem;
+    opacity: 0.5;
+}
+
+.header-middle_text{
+    width: 20.625rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-between;
+}
+/*아이콘 깜빡이기*/
+@keyframes blink-effect{
+    0%{
+        opacity: 0%;
+    }
+    30%{
+        opacity: 50%;
+    }
+    60%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 50%;
+    }
+}
+.header-middle_text_icon{
+    animation: blink-effect 0.5s step-end infinite;
+}
+
+/*header-bottom*/
+.header-bottom{
+    width: 100%;
+    height: 4.375rem;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-bottom_logo{
+    padding-left: 1.25rem;
+    height: 70%;
+    font-size: 3rem;
+    font-weight: 800;
+}
+.header-bottom_nav{
+    height: 100%;
+    align-items: left;
+    font-size: 1.3rem;
+    font-weight: 500;
+
+}
+.header-bottom_ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.header-bottom_ul li{
+    height: 4.375rem;
+    display: inline-block;
+    padding: 1.3125rem 1.75rem;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+}
+/*li 하단 hover할때 border 효과*/
+.header-bottom_ul li::after {
+    background: none repeat scroll 0 0 transparent;
+    background: #a5d9ff;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: .3125rem;
+    left: 50%;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  .header-bottom_ul > li:hover::after {
+    left: 0;
+    width: 100%;
+  }
+
+/*header-hidden*/
+.header-hidden{
+    color: white;
+    align-items: center;
+    flex-direction: column;
+}
+/*hidden-menu-icon*/
+.header-hidden_icon{
+    width: 4.375rem;
+    height: 4.375rem;
+    padding: 0, 1.25rem;
+    margin: 0;
+    font-size: 3.6rem;
+    text-align: center;
+    background-color: transparent; /*투명*/
+    position: absolute;
+    right:0;
+}
+.header-hidden_icon:hover{
+    background-color: #a5d9ff;
+}
+/*hidden menu ul*/
+.header-hidden_ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    position: absolute;
+    top: 100%;
+    right: 0%;
+}
+.header-hidden_ul li{
+    padding: 1rem;
+    width: 100%;
+    font-size: 1.13rem;
+    text-align: center;
+    background-color: black;
+
+
+}
+.header-hidden_ul li:hover{
+    background-color: #a5d9ff;
+}
+
+#header-hidden_icon, .header-hidden_icon, .header-hidden_ul{
+    display: none;
+}
+#header-hidden_icon:checked ~ .header-hidden_ul{
+    display: block;
+}
+
+@media screen and (max-width:768px){
+    .header-hidden_icon{
+        display: block;
+    }
+    .header-bottom_ul{
+        display: none; 
+    }
+    .header-bottom{
+        position: sticky;
+        top: 0px;
+        z-index: 3;
+    }
+}
+@media screen and (min-width:768px){
+    .header-hidden_ul li{
+        display: none; 
+    }
+
+}

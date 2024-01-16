@@ -84,7 +84,7 @@ body{
 }
 
 /*메뉴 토글*/
-#hidden-menu_icon, .hidden-menu>ul{
+#hidden-menu_icon, .hidden-menu > ul{
     display: none;
 }
 #hidden-menu_icon:checked ~ ul{

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/16_ozcoding_homepage_header.css" rel="stylesheet">
-    <link href="/css/16_ozcoding_homepage_main.css" rel="stylesheet">
+    <link href="../css/16_ozcoding_homepage_header.css" rel="stylesheet">
+    <link href="../css/16_ozcoding_homepage_main.css" rel="stylesheet">
     <title>OZ코딩 홈페이지 만들기</title>
     <style>
         *{
@@ -46,20 +46,35 @@
             <!--header-bottom-->
             <div class="header-bottom flex">
                 <div class="header-bottom_logo">OZ</div>
-                <nav class="header-bottom_nav flex">
-                    <ul>
-                        <li>오즈코딩 스쿨</li>
+                <div class="header-bottom_nav flex">
+                    <div class="header-bottom_ul">
+                        <li><a href="#main">오즈코딩 스쿨</a></li>
                         <li>html</li>
                         <li>css</li>
                         <li>커리큘럼</li>
                         <li>문의사항</li>
-                    </ul>
-                </nav>
+                    </div>
+
+                    
+                    <div class="header-hidden flex">
+                        <input type="checkbox" id="header-hidden_icon">
+                        <label class="header-hidden_icon" for="header-hidden_icon">&#9776;</label>
+                        <div class="header-hidden_ul">
+                            <li >오즈코딩 스쿨</li>
+                            <li>html</li>
+                            <li>css</li>
+                            <li>커리큘럼</li>
+                            <li>문의사항</li>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+                <!--hidden-menu-->
         </header>
 
         <!--main-->
-        <main>
+        <main id="main">
             <!--main-info-->
             <section class="main-info">
                 <div class="main-info_text">
