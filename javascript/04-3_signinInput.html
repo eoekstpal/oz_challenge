@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 폼에서 양식 받기</title>
+    <style>
+        *{
+            text-align: center;
+            margin:5px auto;
+        }
+        .main{
+            width: 500px;
+            height: 750px;
+            border-radius: 15px;
+            background-color: rgb(231, 253, 227);
+            box-shadow: 
+            5px 5px rgb(181, 242, 181), 
+            10px 10px rgb(224, 176, 0), 
+            15px 15px green,
+            20px 20px rgb(255, 51, 0)
+        }
+        h1{
+            padding-top: 100px;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        .block, .submit{
+            width:300px;
+            height: 40px;
+        }
+        .num{
+            width:85px;
+            height: 40px;
+        
+        }
+        .auth{
+            width: 300px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <h1>OZ초격차 회원가입</h1>
+        <form id="form" autocomplete="off">
+            <input type="email" name="email" class="block" id="e-mail" placeholder="이메일을 입력하세요.">
+            <br>
+            <input type="text" name="text" class="block" id="name" placeholder="이름을 입력하세요.">
+            <br>
+            <input type="password" name="pw" class="block" id="pw" placeholder="비밀번호를 입력하세요.">
+            <br>
+            <input type="password" name="pw_check" class="block" id="pw_check" placeholder="비밀번호를 다시 입력하세요.">
+            <br>
+            <input type="text" name="phone1" class="num" id="num1" placeholder="010">
+            <span>-</span>
+            <input type="text" name="phone2" class="num" id="num2" placeholder="1234">
+            <span>-</span>
+            <input type="text" name="phone3" class="num"  id="num3" placeholder="5678">
+            <br>
+            <div class="auth">
+                <span>000000</span>
+            <button name="auth_send" id="auth_send">인증번호 전송</button>
+            <br>
+            <span>3:00</span>
+            <button name="auth" id="auth">인증 완료</button>
+            </div>
+
+            <select class="block" id="region">
+                <option disabled selected>거주지역</option>
+                <option>서울특별시</option>
+                <option>부산광역시</option>
+                <option>대구광역시</option>
+                <option>인천광역시</option>
+                <option>광주광역시</option>
+                <option>대전광역시</option>
+                <option>울산광역시</option>
+                <option>세종특별자치시</option>
+                <option>경기도</option>
+                <option>강원틀별자치도</option>
+                <option>충청북도</option>
+                <option>충청남도</option>
+                <option>전라북도</option>
+                <option>전라남도</option>
+                <option>경상북도</option>
+                <option>경상남도</option>
+            <option>제주특별자치도</option>
+            </select>
+            <br>
+            
+            <div>
+            <input type="radio" id="man" name="gender">
+            <label for="man">남성</label>
+            <input type="radio" id="woman" name="gender">
+            <label for="woman">여성</label>
+            </div>
+            <button type="button" class="submit" onclick="getData()">가입하기</button>
+        </form>
+    </main>    
+
+    <script>
+        function getData(){
+            const email = document.getElementById("e-mail").value;
+            const name = document.getElementById("name").value;
+            const pw = document.getElementById("pw").value;
+            const pw_check = document.getElementById("pw_check").value;
+            const num1 = document.getElementById("num1").value;
+            const num2 = document.getElementById("num2").value;
+            const num3 = document.getElementById("num3").value;
+            const auth_send = document.getElementById("auth_send").value;
+            const auth = document.getElementById("auth").value;
+            const region = document.getElementById("region").value;
+            const man = document.getElementById("man").value;
+            const woman = document.getElementById("woman").value;
+
+            const data = {
+                email,
+                name,
+                pw,
+                pw_check,
+                num1, num2, num3,
+                auth_send,
+                auth,
+                region,
+                man,
+                woman
+            };
+
+            console.log(data);
+            console.log("hi");
+        }
+    </script>
+</body>
+</html>

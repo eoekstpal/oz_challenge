@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐러셀</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .carousel-wrapper{
+            width: 500px;
+            height: 300px;
+            /*사진을 감추고 있는 컨테이너 안보이게함*/
+            overflow: hidden;
+        }
+        .carousel{
+            display: flex;
+            /*슬라이딩할때 부드러운 효과주기*/
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.2s;
+        }
+        .carousel > img{
+            width: 500px;
+            height: 300px;
+        }
+        .btn{
+            display: flex;
+            width: 500px;
+            justify-content: center;
+            flex-direction: row;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-wrapper">
+        <div class="carousel">
+            <img src="/images/kda/ari.webp"/>
+            <img src="/images/kda/akali.webp"/>
+            <img src="/images/kda/kaisa.webp"/> 
+            <img src="/images/kda/evelynn.webp"/>
+        </div>
+    </div>
+
+    <div class="btn">
+        <button class="prev" type="button">prev</button>
+        <button class="ari" type="button">아리</button>
+        <button class="akali" type="button">아칼리</button>
+        <button class="kaisa" type="button">카이사</button>
+        <button class="evelynn" type="button">이블린</button>
+        <button class="next" type="button">next</button>
+    </div>
+
+    <script>
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const ariButton = document.querySelector('.ari');
+        const akaliButton = document.querySelector('.akali');
+        const kaisaButton = document.querySelector('.kaisa');
+        const evelynnButton = document.querySelector('.evelynn');
+        const carousel = document.querySelector('.carousel');
+
+        let index = 0;
+
+        prevButton.addEventListener('click', () => {
+            if(index === 0) return;
+            index -= 1;
+            /*원래 있던 리소스는 좌로 오른쪽에 있던 리소스는 캐러셀 컨테이너에 위치해야함
+            다음 리소스는 500px이후에 있기때문에 현재 넓이를 왼쪽에 동일한 넓이만큼 밀어냄 (x,y,z)*/
+            carousel.style.transform = `translate3d(-${500 * index}px, 0, 0)`
+        });
+        nextButton.addEventListener('click', () => {
+            if(index === 3) return;
+            index += 1;
+
+            carousel.style.transform = `translate3d(-${500 * index}px, 0, 0)`
+        });
+        /*개별 버튼*/
+        ariButton.addEventListener('click', () => {
+            index = 0;
+            carousel.style.transform = `translate3d(-${500 * index}px, 0, 0)`
+        });
+        akaliButton.addEventListener('click', () => {
+            index = 1;
+            carousel.style.transform = `translate3d(-${500 * index}px, 0, 0)`
+        });
+        kaisaButton.addEventListener('click', () => {
+            index = 2;
+            carousel.style.transform = `translate3d(-${500 * index}px, 0, 0)`
+        });
+        evelynnButton.addEventListener('click', () => {
+            index = 3;
+            carousel.style.transform = `translate3d(-${500 * index}px, 0, 0)`
+        });
+    </script>
+</body>
+</html>
