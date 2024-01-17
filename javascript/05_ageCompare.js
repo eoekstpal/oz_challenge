@@ -18,14 +18,20 @@
  */
 
 function question(age1, age2) {
-    
-    
     let result;
+    if(age1 == age2){
+        result = "너 내 동료가 돼라!";
+    }else{
+        result = "너 내 도도도도독...";
+    }
+
+    
 
     return result;
 }
 
 // 결과값 함수
+Test(
     question,
     [
         [13, 13],
