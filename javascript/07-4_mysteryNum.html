@@ -48,15 +48,24 @@
     <button type="button" id="re" onClick="window.location.reload()">다시하기</button>
     
     <script>
-        const container = document.getElementById("container");
         const inputText = document.getElementById("inputText");
         const button = document.querySelector(".button");
-        const re = document.getElementById("re");
         let p = document.querySelector(".p");
-        const random = 5//Math.floor(Math.random()*100 + 1);
+        const random = Math.floor(Math.random()*100 + 1);
 
-        button.addEventListener("click", compare)
-        function compare(){
+        button.addEventListener("click", function(){
+            if(inputText.value > random){
+                p.innerText=`힌트: DOWN!`;
+            }else if(inputText.value < random){
+                p.innerText=`힌트: UP!`;
+            }else{
+                alert("정답입니다!!");
+                p.innerText=` `;
+                re.style.display = 'block';
+            }
+        })
+        /* 다른 함수 표현식
+        const compare = function(){
             if(inputText.value > random){
                 p.innerText=`힌트: DOWN!`;
             }else if(inputText.value < random){
@@ -67,6 +76,8 @@
                 re.style.display = 'block';
             }
         }
+        button.addEventListener("click", compare)
+        */
     </script>
 </body>
 </html>
