@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for문으로 별 찍기</title>
+</head>
+<body>
+    <h1>별 트리 찍기</h1>
+
+    <script>
+        //1
+        document.write("1번 별 <br>");
+        for(let i = 1; i < 6; i++){
+            for(let j = 0; j < i; j++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+        document.write("<br>");
+
+       //2
+        document.write("2번 별 <br>");
+        for(let i = 1; i < 6; i++){
+            for(let j = 0; j < i; j++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+        for(let i = 0; i < 6; i++){
+            for(let j = 5-i; j > 0; j--){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+        document.write("<br>");
+
+       //3
+        document.write("3번 별 <br>");
+        for(let i = 1; i < 6; i++){
+            for(let j = 4; j >= i; j--){
+                document.write("&nbsp;");  
+            }
+            for(let k = 0; k < i*2-1; k++){
+                document.write("*");
+            }    
+            document.write("<br>");
+        }
+        for(let i = 4; i > 0; i--){
+            for(let j = 0; j < 5-i; j++){
+                document.write("&nbsp;");  
+            }
+            for(let k = (i*2)-1; k > 0 ; k--){
+                document.write("*");
+            }    
+            document.write("<br>");
+        }
+    </script>
+</body>
+</html>

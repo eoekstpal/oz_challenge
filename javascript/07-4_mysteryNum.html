@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미스테리 숫자 맞추기</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: rgb(49, 49, 49);
+            color: white;
+        }
+        button{
+            width: 120px;
+            height: 40px;
+            border: 2px solid orange;
+            border-radius: 7px;
+            background-color: rgb(49, 49, 49);
+            color: orange;
+            font-size: 17px;
+        }
+        #inputText{
+            width: 200px;
+            height: 40px;
+            margin-right: 20px;
+            text-align: center;
+        }
+        #re{
+            display: none;
+            margin: auto;
+        }
+        .button:active{
+            width: 130px;
+            height: 50px;
+            box-shadow: 0px 5px 5px rgb(255, 216, 58);
+        }
+    </style>
+</head>
+<body>
+    <h1>Mystery Number 맞추기</h1>
+    <h4>1부터 100사이의 숫자를 입력하세요!</h4>
+    <input type="text" id="inputText" name="text">
+    <button type="button" class="button">두둥</button>
+    
+    <div id="container">
+        <p class="p"></p>
+    </div>
+    <button type="button" id="re" onClick="window.location.reload()">다시하기</button>
+    
+    <script>
+        const container = document.getElementById("container");
+        const inputText = document.getElementById("inputText");
+        const button = document.querySelector(".button");
+        const re = document.getElementById("re");
+        let p = document.querySelector(".p");
+        const random = 5//Math.floor(Math.random()*100 + 1);
+
+        button.addEventListener("click", compare)
+        function compare(){
+            if(inputText.value > random){
+                p.innerText=`힌트: DOWN!`;
+            }else if(inputText.value < random){
+                p.innerText=`힌트: UP!`;
+            }else{
+                alert("정답입니다!!");
+                p.innerText=` `;
+                re.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

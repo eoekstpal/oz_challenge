@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적표</title>
+    <style>
+        table, td{
+            border: 1px solid black;
+            border-collapse : collapse;
+            text-align: center;
+        }
+        td{
+            padding: 10px;
+        }
+        .bg{
+            background-color: rgb(232, 205, 250);
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="bg">
+            <td>점수</td>
+            <td>90점이상</td>
+            <td>80~89점</td>
+            <td>70~79점</td>
+            <td>60~69점</td>
+            <td>60점미만</td>
+        </tr>
+        <tr>
+            <td class="bg">학점</td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>F</td>
+        </tr>        
+    </table>
+    <div id="container"></div>
+
+    <script>
+        const container = document.getElementById("container");
+        const p = document.createElement("p");
+        let score = parseInt(prompt("중간고사 점수를 입력해주세요. (0~100)"));
+        if(score >= 90){
+            p.textContent = `기말고사 점수는 ${score}점, 학점은 A입니다.`;
+            container.append(p);
+        }else if(80 <= score && score <= 89){
+            p.textContent = `기말고사 점수는 ${score}점, 학점은 B입니다.`;
+            container.append(p);
+        }else if(70<= score && score <= 79){
+            p.textContent = `기말고사 점수는 ${score}점, 학점은 C입니다.`;
+            container.append(p);
+        }else if(60 <= score && score <= 69){
+            p.textContent = `기말고사 점수는 ${score}점, 학점은 D입니다.`;
+            container.append(p);
+        }else{
+            p.textContent = `기말고사 점수는 ${score}점, 학점은 F입니다.`;
+            container.append(p);
+        }
+    </script>
+</body>
+</html>
