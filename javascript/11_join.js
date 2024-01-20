@@ -8,7 +8,7 @@ form.addEventListener("submit", function(event){
     let userPw2 = event.target.pw2.value
     let userName = event.target.name.value
     let userPhone = event.target.phone.value
-    let userPosition = event.target.phone.value
+    let userPosition = event.target.position.value
     let userGender = event.target.gender.value
     let userEmail = event.target.email.value
     let userIntro = event.target.intro.value

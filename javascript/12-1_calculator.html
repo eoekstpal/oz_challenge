@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-size: 24px;
+        }
+        .container{
+            width: 400px;
+            background-color: rgb(255, 255, 255);
+        }
+        .buttonDiv{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        button{
+            height: 70px;
+            background-color: azure;
+            border: 1px solid rgb(213, 213, 213);
+
+        }
+        input{
+            width: 100%;
+            height: 70px;
+            text-align: right;
+            padding-right: 10px;
+        }
+        button:hover{
+            background-color: rgb(221, 234, 218);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" disabled>
+        <div class="buttonDiv">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button data-type="operator">x</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button data-type="operator">/</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button data-type="operator">-</button>
+            <button data-type="c">C</button>
+            <button>0</button>
+            <button data-type="operator">+</button>
+            <button data-type="result">=</button>
+            <!--데이터셋
+            html: data-속성명
+            javascript: element.dataset.속성명
+            -->
+        </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('button')
+        const display = document.querySelector('input')
+
+        class Calculator{
+            constructor(display){
+                this.display = display
+                this.displayContent = '' //입력값을 저장해 놓을 곳
+                this.operatorCheck = true //연산자 선택 여부, 처음에 연산자가 입력되지 못하도록 막음
+                this.equalCheck = true //compute()한 후 값을 비워주기 위함 
+                this.clear()
+            }
+            //숫자 저장하기
+            appendNum(num){
+                //compute()한 후 값을 비워주기 위함 
+                if(this.equalCheck){
+                    this.displayContent = num
+                    this.equalCheck = false
+                }else{
+                    this.displayContent += num
+                }
+                
+                this.operatorCheck = false //숫자 입력시 false
+            }
+            //연산자 저장하기
+            appendOperator(operator){
+                //true면 빠져나감 
+                //연산자 중복 입력 방지
+                if(this.operatorCheck) return false
+                this.displayContent += operator
+                this.operatorCheck = true //연산자 입력시 true
+            }
+            //화면에 값 띄우기
+            updateDisplay(){
+                this.display.value = this.displayContent
+                console.log("displayContent", this.displayContent)
+            }
+            //c 내용 지우기
+            clear() {
+                this.display.value = ''
+                this.displayContent = ''
+                //숫자 입력후 clear 할때 operatorCheck=false가 되기때문에 연산자가 제일 앞에 오지 못하도록 함
+                this.operatorCheck = true
+            }
+            //eval
+            compute(){
+                if(this.operatorCheck) return //마지막으로 연산자가 입력된 후 compute()해도 실행되지 않도록 함
+                this.displayContent = eval(this.displayContent
+                //곱하기 기호 변경
+                .replace("x", "*")
+                )
+                this.equalCheck = true
+            }
+        }
+
+        const calculator = new Calculator(display)
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () =>{
+                switch(button.dataset.type){
+                    case 'operator':
+                    //연산자 넣는 메소드가 true일 때만 값을 저장
+                        console.log("operator front")
+                        if (calculator.appendOperator(button.innerText)){
+                            calculator.updateDisplay() 
+                            console.log("operator function") //!!문제!! 연산자를 누르면 화면에 바로 출력안됨
+                        }console.log("operator back")
+                        break;
+                    case 'c':
+                        calculator.clear()
+                        break;
+                    case 'result':
+                        calculator.compute()
+                        calculator.updateDisplay()
+                        break;
+                    default:
+                        calculator.appendNum(button.innerText)
+                        calculator.updateDisplay()
+                        console.log("num")
+                        break;
+                }
+            })
+        })
+        /* 참고
+        https://kanhi.tistory.com/2
+        https://kanhi.tistory.com/6?category=807466
+        */
+    </script>
+</body>
+</html>

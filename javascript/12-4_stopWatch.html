@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스톱워치</title>
+</head>
+<body>
+    <h1>스톱워치</h1>
+    <div id="display">
+        <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="millisec">00</span>
+    </div>
+    <div>
+        <button type="button" id="start">시작</button>
+        <button type="button" id="stop">중지</button>
+        <button type="button" id="restart">재시작</button>
+    </div>
+
+    <script>
+        const display = document.getElementById("display");
+        const appendMinutes = document.getElementById("minutes");
+        const appendSeconds = document.getElementById("seconds");
+        const appendMilliSec = document.getElementById("millisec");
+        const startButton = document.getElementById("start");
+        const stopButton = document.getElementById("stop");
+        const reStartButton = document.getElementById("restart");
+        let min = 0;
+        let sec = 0;
+        let ms = 0;
+        let intervalId;
+
+
+        startButton.onclick = function(){
+            //버튼을 두번눌렀을 때 id가 겹치지 않도록 하기 위해 setInterval을 호출할 때마다 id 최신화
+            clearInterval(intervalId)
+            //sterInterval 함수는 반복실행함수를 등록하면서 0이아닌 정수를 반환 (반복실행함수의 id)
+            //intervalId에 id를 저장
+            intervalId = setInterval(timer, 10)
+        }
+
+        stopButton.onclick = function(){
+            //clearInterval 함수를 통하여 id 제거
+            clearInterval(intervalId)
+        }
+
+        reStartButton.onclick = function(){
+            clearInterval(intervalId)
+            ms = 0
+            sec = 0
+            min = 0
+            
+            appendMilliSec.textContent = "00"
+            appendSeconds.textContent = "00"
+            appendMinutes.textContent = "00"
+        }
+
+        function timer(){
+            ms++;
+            appendMilliSec.textContent = ms > 9 ? ms : "0"+ ms //삼항연산자 (조건) ? value1 : value2 조건이 참이면 value1, 거짓이면 value2 실행
+            if(ms > 99){
+                sec++;
+                appendSeconds.textContent = sec > 9 ? sec : "0"+ sec
+                ms = 0
+                appendMilliSec = "00"
+            }
+            if(sec > 99){
+                min++;
+                appendMinutes.textContent = min > 9 ? min : "0"+ min
+                sec = 0
+                appendSeconds = "00"
+            }
+        }
+
+        //참고: https://www.youtube.com/watch?v=a01-IPc57Rk&list=PLFeNz2ojQZjtjeglKrR0xThGOxueKoncF&index=8&ab_channel=%EC%9C%A0%EB%85%B8%EC%BD%94%EB%94%A9
+    </script>
+</body>
+</html>

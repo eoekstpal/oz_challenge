@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카운트다운</title>
+</head>
+<body>
+    <h4>현재 날짜와 시간: <span class="now"></span></h4>
+    <h4>올해의 남은 시간: <span class="future"></span></h4>
+    <script>
+        let nowDate = new Date();
+        let futureDate = new Date(2024, 12, 31, 12, 59);
+        const now = document.querySelector(".now")
+        const future = document.querySelector(".future")
+        let remain = futureDate - nowDate
+        const Day = Math.floor(remain / (1000*60*60*24));
+        const Hour = Math.floor((remain / (1000*60*60)) % 24);
+        const Min = Math.floor((remain / (1000*60)) % 60);
+        const Sec = Math.floor(remain / 1000 % 60); 
+        
+        now.textContent = nowDate
+        future.textContent = `${Day}일 ${Hour}시간 ${Min}분 ${Sec}초 남았습니다.`;
+
+
+    </script>
+</body>
+</html>
