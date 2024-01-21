@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+</head>
+<body>
+    <h1>가위바위보</h1>
+    <p>가위, 바위, 보 중 하나를 입력하세요!</p>
+    <div>
+        <input type="text" id="inputtext">
+        <button type="button" id="button">결과 확인</button>
+        <p>당신의 선택: <span id="yourchoice"></span></p>
+        <p>컴퓨터의 선택: <span id="comchoice"></span></p>
+        <p>결과: <span id="result"></span></p>
+    </div>
+    
+    <script>
+        const input = document.getElementById("inputtext")
+        const button = document.querySelector("button")
+        const yourChoice = document.getElementById("yourchoice")
+        const comChoice = document.getElementById("comchoice")
+        const result = document.getElementById("result")
+        let user = 0
+        let com = 0
+
+        function userInput(){
+            yourChoice.textContent = input.value
+            switch(input.value){
+                case "가위":
+                    user = 0
+                    break;
+                case "바위":
+                    user = 1
+                    break;
+                case "보":
+                    user = 2
+                    break;
+            }
+        }
+
+        function comRandom(){
+            com = parseInt(Math.random()*3)
+            switch(com){
+                case 0:
+                    comChoice.textContent = "가위"
+                    break;
+                case 1:
+                    comChoice.textContent = "바위"
+                    break;
+                case 2:
+                    comChoice.textContent = "보"
+                    break;
+            }
+        }
+
+        function compare(){
+            if(user == com){
+                result.textContent = "비겼습니다."
+            }else if((user == 0 && com == 1) || (user == 1 && com == 2) ||(user == 2 && com == 0)){
+                result.textContent = "졌습니다."
+            }else if((user == 0 && com == 2) || (user == 1 && com == 0) ||(user == 2 && com == 1)){
+                result.textContent = "이겼습니다."
+            }else(
+                result.textContent = "가위, 바위, 보 중에 입력하세요!"
+            )
+        }
+
+        button.addEventListener('click', function(){
+            console.log("hi")
+            userInput()
+            comRandom()
+            compare()
+        })
+    </script>
+</body>
+</html>
