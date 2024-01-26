@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>견종 정보 페이지</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            /*스크롤 부드러운 효과*/
+            scroll-behavior: smooth;
+        }
+        html,body{
+            margin: 0;
+        }
+        #container{
+            width: 100%;
+            max-width: 640px;
+            margin: auto;
+        }
+        header{
+            width: 100%;
+            max-width: 640px;
+            height: 60px;
+            border-bottom: 1px solid #00000033;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            top: 0;
+        }
+        .header_search{
+            display: flex;
+            align-items: center;
+        }
+        input, button, select{
+            height: 30px;
+            border: 0.5px solid gray;
+        }
+        main{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        .more, .tothetop{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            cursor: pointer;
+        }
+        .more{
+            color: #FFFFFF;
+            background-color: #e4b3b3;
+            left: 100px;
+            bottom: 100px;
+        }
+        .tothetop{
+            color: #FFFFFF;
+            background-color: #b3bee4;
+            right: 100px;
+            bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header class="header" id="header">
+            <div class="header_search">
+                <input id="filter-text">
+                <button id="filter-button">필터링</button>
+            </div>
+            <select id="filter-select">
+                <option value="">all</option>
+            </select>
+            <button id="refresh-button">Refresh</button>
+        </header>
+
+        <main class="main" id="main">
+            <div class="more" id="more">MORE</div>
+            <div class="tothetop" id="tothetop">TOP</div>
+        </main>
+    </div>
+
+
+    <script src="/06_breeds.js"></script>
+</body>
+</html>
