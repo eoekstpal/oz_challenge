@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 멈추기</title>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="img">
+    </div>
+    <button type="button" id="button">STOP!</button>
+
+    <script>
+        const img = document.getElementById("img")
+        const button = document.getElementById("button")   
+        let imgArray = ["1.jpeg", "2.jpg", "3.jpeg", "4.jpeg"]
+        let i = 0
+        img.src = imgArray[0]
+        let interval = setInterval(function(){
+            i++
+            if(i > 3) i = 0;
+            img.src = "/javascript/images/16-2_manggom/"+imgArray[i]
+            
+        }, 1000)
+
+        button.addEventListener("click",function(){
+            clearInterval(interval)
+        })
+    </script>
+</body>
+</html>
