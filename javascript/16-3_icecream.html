@@ -6,6 +6,46 @@
     <title>아이스크림 이름 나열하기</title>
 </head>
 <body>
-    
+    <div>
+        <button type="button" id="add">아이스크림 종류 추가</button>
+        <button type="button" id="name">아이스크림 이름 출력</button>
+        <button type="button" id="list">아이스크림 목록 출력</button>
+    </div>
+    <div>
+        <h2>입력한 아이스크림 목록</h2>
+        <p>메로나<span id="icecream"></span></p>
+    </div>
+    <script>
+        const add = document.getElementById("add")
+        const namePrint = document.getElementById("name")
+        const listPrint = document.getElementById("list")
+        const icecream = document.getElementById("icecream")
+        let iceList = []
+
+        add.addEventListener("click", function(){
+            const text = prompt("추가하고싶은 아이스크림 이름을 입력해주세요.")
+            iceList.push(text)
+        })
+        namePrint.addEventListener("click", function(){
+            if(iceList.length == 0){
+                alert("먼저 아이스크림을 입력하세요!")
+            }else{
+                for(let i = 0; i < iceList.length; i++){
+                    alert(iceList[i]) 
+                }
+            }
+        })
+        listPrint.addEventListener("click", function(){
+            if(iceList.length == 0){
+                alert("먼저 아이스크림을 입력하세요!")
+            }else{
+                const textList = iceList.join(', ');
+            console.log(icecream)
+            icecream.innerHTML = ""
+            icecream.textContent = ", " + textList
+            }
+        })
+
+    </script>
 </body>
 </html>
