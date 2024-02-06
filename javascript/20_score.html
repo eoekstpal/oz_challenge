@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적표</title>
+    <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td{
+            width: 80px;
+            text-align: center;
+            border: 1px solid black
+        }
+    </style>
+</head>
+<body>
+    <h2>떡잎 유치원 멀리뛰기 결과</h2>
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>점수</th>
+        </tr>
+        <tr id="zzang">
+            <td class="name">짱구</td>
+            <td class="score">45</td>
+        </tr>
+        <tr id="mang">
+            <td class="name">맹구</td>
+            <td class="score">75</td>
+        </tr>
+        <tr id="chul">
+            <td class="name">철수</td>
+            <td class="score">95</td>
+        </tr>
+        <tr id="hun">
+            <td class="name">훈이</td>
+            <td class="score">50</td>
+        </tr>
+        <tr id="yu">
+            <td class="name">유리</td>
+            <td class="score">68</td>
+        </tr>
+        <tr id="su">
+            <td class="name">수지</td>
+            <td class="score">86</td>
+        </tr>
+    </table>
+    <h4>75점이 넘는 사람: <span><p id="seventyfive"></p></span></h4>
+    <h4>성적순: <span><p id="first"></p></span></h4>
+
+    <script>
+        const scoreClass = document.getElementsByClassName("score")
+        const seventyfive = document.getElementById("seventyfive")
+        const first = document.getElementById("first")
+        let score = []
+
+        for(let i = 0; i < scoreClass.length; i++){
+            score.push(parseInt(scoreClass[i].innerText))
+        }
+        console.log(score)
+        first.textContent = score.sort((a, b) => b - a)
+
+    </script>
+</body>
+</html>
