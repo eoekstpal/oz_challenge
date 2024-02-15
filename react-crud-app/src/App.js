@@ -12,7 +12,7 @@ const [expenses, setExpenses] = useState([
 ])
 
 const [charge, setCharge] = useState("");
-const [amount, setAmount] = useState(0);
+const [amount, setAmount] = useState();
 
 const handleCharge = (e) => {
   setCharge(e.target.value)
@@ -33,9 +33,9 @@ const handleSubmit = (e) => {
     const newExpense = {id: crypto.randomUUID(), charge, amount}
 
     const newExpenses = [...expenses, newExpense];
-    setExpenses(newExpense);
+    setExpenses(newExpenses);
     setCharge("");
-    setAmount(0);
+    setAmount("");
   } else{
     console.error('error')
   }
@@ -46,12 +46,12 @@ const handleSubmit = (e) => {
         <div className="sub-container">
           <h1>장바구니</h1>
           <div style={{width: '100%', backgroundColor: 'white', padding: '1rem'}}>
-            {/*Extends form*/}
+            {/*Expends form*/}
             <ExpenseForm charge={charge} handleSubmit={handleSubmit} handleCharge={handleCharge} amount={amount} handleAmount={handleAmount} />
           </div>
 
           <div style={{width: '100%', backgroundColor: 'white', padding: '1rem'}}>
-            {/*Extends list*/}
+            {/*Expends list*/}
             <ExpenseList initialExpenses={expenses} handleDelete={handleDelete} />
           </div>
           <div style={{display: 'flex', justifyContent: 'start', marginTop: '1rem'}}>
