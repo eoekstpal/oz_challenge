@@ -41,6 +41,10 @@ const handleDelete = (id) => {
   handleAlert({type: "danger", text: "아이템이 삭제되었습니다."});
 }
 
+const clearItems = () => {
+  setExpenses([]);
+}
+
 const handleSubmit = (e) => {
   e.preventDefault();
   if(charge !=="" && amount > 0) {
@@ -85,7 +89,7 @@ const handleAlert = ({type, text}) => {
 
           <div style={{width: '100%', backgroundColor: 'white', padding: '1rem'}}>
             {/*Expends list*/}
-            <ExpenseList handleEdit={handleEdit} initialExpenses={expenses} handleDelete={handleDelete} />
+            <ExpenseList expenses={expenses} clearItems={clearItems} handleEdit={handleEdit} initialExpenses={expenses} handleDelete={handleDelete} />
           </div>
           <div style={{display: 'flex', justifyContent: 'start', marginTop: '1rem'}}>
             <p style={{fontSize: '2rem'}}>
