@@ -2,14 +2,14 @@ import React from 'react'
 import './ExpenseList.css'
 import ExpenseItem from './ExpenseItem'
 
-const ExpenseList = ({initialExpenses, handleDelete}) => {
+const ExpenseList = ({initialExpenses, handleDelete, handleEdit}) => {
   return (
     <>
     <ul className='list'>
         {initialExpenses.map(expense => {
             return(
                 <ExpenseItem key={expense.id} expense={expense}
-                    handleDelete={handleDelete}/>
+                    handleDelete={handleDelete} handleEdit={handleEdit}/>
             )
         })}
     </ul>
