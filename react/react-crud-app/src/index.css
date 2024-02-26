@@ -1,0 +1,40 @@
+:root {
+  --primaryColor: #BCA88E;
+  --secondColor: #9DA993;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainRed: #C45145;
+  --mainGreen: #4CAF50;
+}
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: var(--secondColor);
+}
+
+h1{
+  margin: 1rem 0;
+}
+
+.btn{
+  color: var(--mainWhite);
+  text-align: center;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 2px;
+  height: 36px;
+  padding: 0 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0;
+  background-color: var(--primaryColor);
+  display: flex;
+  align-items: center;
+}
+
+.btn-icon {
+  margin-left: 0.75rem;
+  font-size: 1.2rem;
+}
