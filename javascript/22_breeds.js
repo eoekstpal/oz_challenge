@@ -79,7 +79,7 @@ select.addEventListener("change", function(){
 more.addEventListener("click", function(){
     request1.open("get", apiRandomDogs)
     request2.addEventListener("load", function(){
-        const response = JSON.parse(request1.response)
+        const response = JwSON.parse(request1.response)
         response.message.forEach(function(item){
             currentDogs.push(item)
             displayDogs(item)
