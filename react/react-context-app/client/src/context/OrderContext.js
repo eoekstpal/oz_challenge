@@ -12,20 +12,20 @@ export function OrderContextProvider(props) {
         products: 0,
         options: 0,
         total: 0
-    })
+    });
 
     const pricePerItem = {
         products: 1000,
         options: 500
-    }
+    };
 
     const calculateSubtotal = (orderType, orderCounts) => {
         let optionCount = 0;
-        for (const count of orderCounts[orderType].values()) {
+        for (const count of orderCounts[orderType].values()){
             optionCount += count;
         }
-    }
-
+        return optionCount * pricePerItem[orderType]
+    };
     useEffect(() => {
         const producsTotal = calculateSubtotal("products", orderCounts);
         const optionsTotal = calculateSubtotal("options", orderCounts);
@@ -35,22 +35,21 @@ export function OrderContextProvider(props) {
             options: optionsTotal,
             total
         })
-    }, [orderCounts])
+    }, [orderCounts]);
 
     {/*useMemo로 감싸준 이유: state가 업데이트 되면 
     <OrderContextProvider>로 감싸준 것이 다 리렌더링 되기 때문에 이것을 최소화 함*/}
     const value = useMemo(() => {
         function updateItemCount(itemName, newItemCount, orderType) {
-            const newOrderCounts = [{ ...orderCounts }];
-
+            const newOrderCounts = { ...orderCounts };
             const orderCountsMap = orderCounts[orderType];
             orderCountsMap.set(itemName, parseInt(newItemCount));
 
             setOrderCounts(newOrderCounts);
         }
         
-        return [{ ... orderCounts, totals }, updateItemCount];
+        return [{ ...orderCounts, totals }, updateItemCount];
     }, [orderCounts, totals]);
 
-    return <OrderContext.Provider value={value} {...props} />
+    return <OrderContext.Provider value={value} {...props} />;
 }

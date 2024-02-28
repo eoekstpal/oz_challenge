@@ -10,7 +10,6 @@ const Type = ({orderType}) => {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
   const [orderData, updateItemCount] = useContext(OrderContext);
-  console.log(orderData, updateItemCount)
 
   useEffect(() => {
     loadItems(orderType);
@@ -31,6 +30,7 @@ const Type = ({orderType}) => {
       key={item.name}
       name={item.name}
       imagePath={item.imagePath}
+      updateItemCount={(itemName, newItemCount) => updateItemCount(itemName, newItemCount, orderType)}
     />
 ))
   if (error) {
@@ -41,7 +41,7 @@ const Type = ({orderType}) => {
     <div>
       <h2>주문 종류</h2>
       <p>하나의 가격</p>
-      <p>총 가격: </p>
+      <p>총 가격: {orderData.totals[orderType]}</p>
       <div 
         style={{
           display: 'flex',
