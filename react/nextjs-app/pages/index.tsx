@@ -12,7 +12,7 @@ const Home = ({ allPostsData }: {
   }[]
 }) => {
   return (
-    <>
+    <div className={homeStyles.container}>
       <Head>
         <title>SEMI</title>
       </Head>
@@ -38,7 +38,7 @@ const Home = ({ allPostsData }: {
           )}
         </ul>
       </section>
-    </>
+    </div>
   );
 }
 
