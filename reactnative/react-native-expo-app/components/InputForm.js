@@ -1,7 +1,10 @@
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
 const InputForm = () => {
+    // const [currentValue, setCurrentValue] = useState("");
+    // const dispatch = useDispatch();
+
   return (
     // 키보드가 올라오는 만큼 input이 밀려 올라감
     <KeyboardAvoidingView
@@ -10,8 +13,10 @@ const InputForm = () => {
       <TextInput
         style={styles.inputField}
         placeholder='할 일을 작성해주세요'
+        value={currentValue}
+        onChangeText={setCurrentValue}
         />
-        <Pressable style={styles.addButton}>
+        <Pressable style={styles.addButton} onPress={handleSubmit}>
             <Text style={styles.addButtonText}>+</Text>
         </Pressable>
     </KeyboardAvoidingView>
