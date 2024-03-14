@@ -1,4 +1,4 @@
-import { Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import InputForm from '../components/InputForm'
@@ -6,7 +6,9 @@ import TodoItem from '../components/TodoItem'
 import { useSelector } from 'react-redux'
 
 const MainScreen = () => {
-    const todos = useSelector(state => state.todo.todos)
+    const todos = useSelector(state => state.todo.todos);
+    const todoTasks = todos.filter((item) => item.state === 'todo');
+    const completedTasks = todos.filter((item) => item.state === 'done')
 
   return (
     // 상태바 아래 부터 시작하도록함 
@@ -16,11 +18,28 @@ const MainScreen = () => {
         <Text style={styles.pageTitle}>ToDo App</Text>
         <View style={styles.listView}>
             <Text style={styles.listTitle}>할 일</Text>
-            <TodoItem />
+            {todoTasks.length !== 0 ? (
+                <FlatList
+                    data={todoTasks}
+                    renderItem={({ item }) => <TodoItem {...item} />}
+                    keyExtractor={(item) => item.id}
+                />
+            ): (
+                <Text style={styles.emptyListText}>할 일이 없습니다.</Text>
+            )}
         </View>
         <View style={styles.separator} />
         <View style={styles.listView} >
             <Text style={styles.listTitle}>완료된 일</Text>
+            {completedTasks.length !== 0 ? (
+                <FlatList
+                    data={completedTasks}
+                    renderItem={({ item }) => <TodoItem {...item} />}
+                    keyExtractor={(item) => item.id}
+                />
+            ): (
+                <Text style={styles.emptyListText}>완료된 일이 없습니다.</Text>
+            )}
         </View>
         <InputForm />
     </SafeAreaView>

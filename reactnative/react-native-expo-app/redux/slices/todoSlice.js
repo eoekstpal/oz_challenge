@@ -16,12 +16,12 @@ const todoSlice = createSlice({
         },
         updateTodo: (state, action) => {
             const item = state.todos.findIndex((item) => item.id === action.payload);
-            state.todos[item].state === 'todo' ? 'done' : 'todo';
+            state.todos[item].state = state.todos[item].state === 'todo' ? 'done' : 'todo';
             state.todos.push(state.todos.splice(item, 1)[0]);
         },
         deleteTodo: (state, action) => {
             const item = state.todos.findIndex((item) => item.id === action.payload);
-            if(them > -1) {
+            if(item > -1) {
                 state.todos.splice(item, 1);
             }
         }

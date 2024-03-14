@@ -3,28 +3,38 @@ import React from 'react'
 import CheckboxUnchecked from '../assets/checkbox-unchecked.svg'
 import CheckboxChecked from '../assets/checkbox-checked.svg'
 import DeleteIcon from '../assets/delete.svg'
+import { deleteTodo, updateTodo } from '../redux/slices/todoSlice'
+import { useDispatch } from 'react-redux'
 
-const TodoItem = () => {
+const TodoItem = (props) => {
+    const dispatch = useDispatch();
   return (
     <View style={styles.itemContainer}>
         <Pressable
             //  눈에 보이는 버튼 밖으로 터치를 인식하는 범위
             hitSlop={10}
             style={styles.itemCheckBox}
-        >
-            <CheckboxUnchecked />
-            <CheckboxChecked style={styles.itemCheckboxCheckedIcon} />
+            onPress={() => dispatch(updateTodo(props.id))}
+        >   
+            {props.state === 'todo' ? (
+                <CheckboxUnchecked />
+            ) : (
+                <CheckboxChecked style={styles.itemCheckboxCheckedIcon} />
+            )}
+
         </Pressable>
         <Text
-            style={[styles.itemText, styles.itemTextChecked]}
+            style={[styles.itemText, 
+                    props.state === 'done' && styles.itemTextChecked]}
         >
-            코딩하기
+            {props.text}
         </Text>
         <Pressable
             style={[
                 styles.deleteButton,
-                styles.deleteButtonDone
+                props.state === 'done' && styles.deleteButtonDone
             ]}
+            onPress={() => dispatch(deleteTodo(props.id))}
             hitSlop={10}
         >
             <DeleteIcon />
