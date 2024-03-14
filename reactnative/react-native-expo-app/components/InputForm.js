@@ -1,10 +1,18 @@
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addTodo } from '../redux/slices/todoSlice';
 
 const InputForm = () => {
-    // const [currentValue, setCurrentValue] = useState("");
-    // const dispatch = useDispatch();
+    const [currentValue, setCurrentValue] = useState('');
+    const dispatch = useDispatch();
 
+    const handleSubmit = () => {
+        if(currentValue !== '') {
+            dispatch(addTodo(currentValue));
+            setCurrentValue('');
+        }
+    }
   return (
     // 키보드가 올라오는 만큼 input이 밀려 올라감
     <KeyboardAvoidingView
@@ -15,6 +23,8 @@ const InputForm = () => {
         placeholder='할 일을 작성해주세요'
         value={currentValue}
         onChangeText={setCurrentValue}
+        //엔터키로 누를수있게
+        onSubmitEditing={handleSubmit}
         />
         <Pressable style={styles.addButton} onPress={handleSubmit}>
             <Text style={styles.addButtonText}>+</Text>

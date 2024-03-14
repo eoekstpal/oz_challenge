@@ -1,10 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
 import MainScreen from './screens/MainScreen';
+import store from './redux/store';
 
 export default function App() {
   return (
-    <MainScreen/>
+    <Provider store={store}>
+      <MainScreen/>
+    </Provider>
   );
 }
 

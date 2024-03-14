@@ -8,9 +8,9 @@ const TodoItem = () => {
   return (
     <View style={styles.itemContainer}>
         <Pressable
-        //  눈에 보이는 버튼 밖으로 터치를 인식하는 범위
-        hitSlop={10}
-        style={styles.itemCheckBox}
+            //  눈에 보이는 버튼 밖으로 터치를 인식하는 범위
+            hitSlop={10}
+            style={styles.itemCheckBox}
         >
             <CheckboxUnchecked />
             <CheckboxChecked style={styles.itemCheckboxCheckedIcon} />

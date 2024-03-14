@@ -3,8 +3,11 @@ import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import InputForm from '../components/InputForm'
 import TodoItem from '../components/TodoItem'
+import { useSelector } from 'react-redux'
 
 const MainScreen = () => {
+    const todos = useSelector(state => state.todo.todos)
+
   return (
     // 상태바 아래 부터 시작하도록함 
     <SafeAreaView style={styles.container}>
