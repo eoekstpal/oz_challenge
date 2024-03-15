@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-expo-app",
-    "slug": "react-native-expo-app",
+    "name": "react-native--basic-expo-app",
+    "slug": "react-native--basic-expo-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

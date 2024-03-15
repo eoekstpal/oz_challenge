@@ -1,21 +1,42 @@
-import { FlatList, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import InputForm from '../components/InputForm'
 import TodoItem from '../components/TodoItem'
 import { useSelector } from 'react-redux'
+import { signOut, getAuth } from 'firebase/auth'
+import { useNavigation } from '@react-navigation/native'
 
 const MainScreen = () => {
     const todos = useSelector(state => state.todo.todos);
     const todoTasks = todos.filter((item) => item.state === 'todo');
     const completedTasks = todos.filter((item) => item.state === 'done')
+    const auth = getAuth();
+    const navigation = useNavigation();
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            navigation.replace("Login")
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
   return (
     // 상태바 아래 부터 시작하도록함 
     <SafeAreaView style={styles.container}>
         {/* 상태바 */}
         <StatusBar barStyle={'default'} />
-        <Text style={styles.pageTitle}>ToDo App</Text>
+        <View style={styles.headerContainer}>
+            <Text style={styles.pageTitle}>ToDo App</Text>
+            <TouchableOpacity
+                style={styles.logOutButton}
+                onPress={handleLogout}
+            >
+                <Text style={styles.logOutText}>LogOut</Text>
+            </TouchableOpacity>
+        </View>
         <View style={styles.listView}>
             <Text style={styles.listTitle}>할 일</Text>
             {todoTasks.length !== 0 ? (
@@ -83,5 +104,31 @@ const styles = StyleSheet.create({
         fontSize: 15,
         lineHeight: 20,
         color: '#737373'
+    },
+    logOutText: {
+        color: 'white',
+        fontSize: 10
+    },
+    headerContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    logOutButton: {
+        marginBottom: 25,
+        marginRight: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 42,
+        height: 42,
+        borderRadius: 4,
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        shadowColor: '#000000',
+        shadowOpacity: 0.14,
+        shadowRadius: 8,
+        shadowOffset: {
+            width: 0,
+            height: 4
+        }
     }
 })
