@@ -58,7 +58,7 @@ const App = () => {
         <Stack.Screen name="EditProfile" component={EditProfile} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
-};
+  )
+}
 
 export default App;
