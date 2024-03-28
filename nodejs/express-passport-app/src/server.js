@@ -14,6 +14,8 @@ app.use(cookieSession({
   keys: [cookieEncryptionKey]
 }))
 
+// // passport 0.6 버전 + cookie session 같이 쓸 때 오류 해결용
+// // TypeError: req.session.regenerate is not a function
 // app.use(cookieSession({
 //   // ...
 // }))
@@ -79,11 +81,18 @@ app.post('/login', (req, res, next) => {
   })(req, res, next);
 })
 
+// //passport 0.6.0버전
+// app.post('/logout', (req, res, next) => {
+//   req.logOut(function (err) {
+//     if (err) { return next (err); }
+//     res.redirect('/')
+//   })
+// })
+
+// passport 0.5.0버전
 app.post('/logout', (req, res, next) => {
-  req.logOut(function (err) {
-    if (err) { return next (err); }
+  req.logOut()
     res.redirect('/login')
-  })
 })
 
 app.get('/signup', checkNotAuthenticated, (req, res) => {
