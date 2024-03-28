@@ -5,34 +5,20 @@ const passport = require('passport');
 const app = express();
 const path = require('path');
 const User = require('./models/users.model');
-const { checkAuthenticated, checkNotAuthenticated } = require('./middlewares/auth');
 
-const cookieEncryptionKey = 'supersecret-key';
+const config = require('config');
+const mainRouter = require('./routes/main.router');
+const usersRouter = require('./routes/users.router');
+const serverConfig = config.get('server');
+
+const port = serverConfig.port;
+
+require('dotenv').config();
 
 app.use(cookieSession({
   name: 'cookie-session-name',
-  keys: [cookieEncryptionKey]
+  keys: [process.env.COOKIE_ENCRYPTION_KEY ]
 }))
-
-// // passport 0.6 버전 + cookie session 같이 쓸 때 오류 해결용
-// // TypeError: req.session.regenerate is not a function
-// app.use(cookieSession({
-//   // ...
-// }))
-// // register regenerate & save after the cookieSession middleware initialization
-// app.use(function(request, response, next) {
-//   if (request.session && !request.session.regenerate) {
-//       request.session.regenerate = (cb) => {
-//           cb()
-//       }
-//   }
-//   if (request.session && !request.session.save) {
-//       request.session.save = (cb) => {
-//           cb()
-//       }
-//   }
-//   next()
-// })
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -47,7 +33,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 mongoose.set('strictQuery', false);
-mongoose.connect(`mongodb+srv://semi:0000@express-cluster.fdwrb4c.mongodb.net/?retryWrites=true&w=majority&appName=express-cluster`)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('connected')
   })
@@ -57,63 +43,9 @@ mongoose.connect(`mongodb+srv://semi:0000@express-cluster.fdwrb4c.mongodb.net/?r
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
-app.get('/', checkAuthenticated, (req, res) => {
-  res.render('index');
-})
+app.use('/', mainRouter);
+app.use('/auth', usersRouter);
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
-  res.render('login');
-}) 
-
-app.post('/login', (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      return res.json({ msg: info });
-    }
-
-    req.logIn(user, function (err) {
-      if (err) { return next(err); }
-      res.redirect('/');
-    })
-  })(req, res, next);
-})
-
-// //passport 0.6.0버전
-// app.post('/logout', (req, res, next) => {
-//   req.logOut(function (err) {
-//     if (err) { return next (err); }
-//     res.redirect('/')
-//   })
-// })
-
-// passport 0.5.0버전
-app.post('/logout', (req, res, next) => {
-  req.logOut()
-    res.redirect('/login')
-})
-
-app.get('/signup', checkNotAuthenticated, (req, res) => {
-  res.render('signup');
-})
-
-app.post('/signup', async (req, res) => {
-  // user 객체 생성
-  const user = new User(req.body);
-  try {
-    // user 컬렉션에 user 저장
-    await user.save();
-    return res.status(200).json({
-      success: true
-    })
-  } catch (error) {
-    console.error(error);
-  }
-})
-
-const port = 4000;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 })

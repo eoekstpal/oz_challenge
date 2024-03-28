@@ -12,7 +12,13 @@ const userSchema = mongoose.Schema({
   },
   googleId: {
     type: String,
-    unique: true
+    unique: true,
+    // sparse: true
+  },
+  kakaoId: {
+    type: String,
+    unique: true,
+    // sparse: true
   }
 })
 
@@ -31,6 +37,8 @@ userSchema.pre('save', function (next) {
         next();
       })
     })
+  } else {
+    next();
   }
 })
 
